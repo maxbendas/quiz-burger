@@ -101,6 +101,7 @@ document.addEventListener('click', (event) => {
 
 const playTest = () => {
   let numberQuestion = 0;
+
   const renderAnswers = (index) => {
     questions[index].answers.forEach((answer) => {
 
@@ -121,11 +122,29 @@ const playTest = () => {
   const renderQuestions = (indexQestions) => {
     formAnswers.innerHTML = '';
 
+    // ------DZ day 2
+
+    if (numberQuestion === 0) {
+      prevButton.style.display = 'none'
+    } else if (numberQuestion > 0) {
+      prevButton.style.display = 'inline-block'
+    }
+
+    if (numberQuestion === questions.length - 1) {
+      nextButton.style.display = 'none'
+    } else {
+      nextButton.style.display = 'inline-block'
+    }
+
+    // -------
+
     questionTitle.textContent = questions[indexQestions].question;
 
     renderAnswers(indexQestions)
   }
   renderQuestions(numberQuestion);
+
+
 
   const nextQuestion = () => {
     numberQuestion++;
